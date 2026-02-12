@@ -24,9 +24,11 @@ This project demonstrates a flexible mobile game UI implementation featuring:
 
 Due to time constraints, final visual polish and animation timing of production quality were not part of the scope as the goal was to focus on showcasing a wide range of various skills.
 LevelCompletedScreen has title text imported as images and is not setup properly as TMP once again due to time constraints and since the goal of that part of the task was to focus
-on showcasing animation and VFX handling.
+on showcasing animation and VFX handling in general. Still, the animation timing and some values require extra polish (especially the text title), but due to time constraints it was
+decided to share the draft look.
 All animations are done in code due to time constraints and to showcase code-based animation skills and also to demonstrate another viable approach to implementing UI animations, since
 there are case studies proving its better overall performance.
+I also had an idea of implementing an instant scroll of the pattern for the LevelComplete background, but it required more time to propely cut and then tile the pattern. The original .png did not have a seamless cut and thus, when moving the image on Y axis via Raw Image component, the cut in pattern was very noticeable and the decision has been made to cut this effect for now.
 
 ## Key Features Implemented
 
