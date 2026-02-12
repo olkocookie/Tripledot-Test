@@ -45,32 +45,21 @@ public class LevelCompletedScreenController : MonoBehaviour
     
     [Header("Buttons")]
     [SerializeField] private Button homeButtonComponent;
-    [SerializeField] private Button continueButtonComponent;
     
     [Header("Animation Settings")]
     [SerializeField] private float transitionDuration = 0.4f;
-
-    private void Awake()
-    {
-        // Setup button listeners
-        if (homeButtonComponent != null)
-        {
-            homeButtonComponent.onClick.AddListener(OnHomeButtonClicked);
-        }
-        
-        if (continueButtonComponent != null)
-        {
-            continueButtonComponent.onClick.AddListener(OnContinueButtonClicked);
-        }
-        
-        // Start hidden
-        gameObject.SetActive(false);
-    }
-
+    
     private void OnEnable()
     {
-        // Play show animation when activated
+        // When activated, play show animation
         AnimateIn();
+    
+        // Setup home button only
+        if (homeButtonComponent != null)
+        {
+            homeButtonComponent.onClick.RemoveListener(OnHomeButtonClicked);
+            homeButtonComponent.onClick.AddListener(OnHomeButtonClicked);
+        }
     }
 
     private void AnimateIn()
@@ -222,7 +211,7 @@ public class LevelCompletedScreenController : MonoBehaviour
         // Burst particles (one-shot)
         if (particlesBurst != null)
         {
-            DOVirtual.DelayedCall(starDelay + 0.2f, () =>
+            DOVirtual.DelayedCall(starDelay + 0.35f, () =>
             {
                 particlesBurst.Play();
             });
@@ -264,16 +253,6 @@ public class LevelCompletedScreenController : MonoBehaviour
         });
     }
 
-    private void OnContinueButtonClicked()
-    {
-        AnimateOut(() =>
-        {
-            // Handle continue logic here
-            Debug.Log("Continue to next level");
-            gameObject.SetActive(false);
-        });
-    }
-
     private void AnimateOut(Action onComplete = null)
     {
         // Stop looped particles
@@ -297,11 +276,6 @@ public class LevelCompletedScreenController : MonoBehaviour
         if (homeButtonComponent != null)
         {
             homeButtonComponent.onClick.RemoveListener(OnHomeButtonClicked);
-        }
-        
-        if (continueButtonComponent != null)
-        {
-            continueButtonComponent.onClick.RemoveListener(OnContinueButtonClicked);
         }
     }
 }
