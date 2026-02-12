@@ -3143,29 +3143,30 @@ MonoBehaviour:
   titleLevelImage: {fileID: 1212658340}
   titleCompletedImage: {fileID: 1985896834}
   titleDelay: 0.2
-  titleDuration: 0.6
+  titleDuration: 1
+  titleTargetPosition: {x: 0, y: -150}
   starBig: {fileID: 1063388071}
   starDelay: 0.4
-  starDuration: 0.8
+  starDuration: 1.5
   starScoreText: {fileID: 440583599}
   scoreDelay: 0.8
-  scoreDuration: 0.5
+  scoreDuration: 1
   rewardsContainer: {fileID: 196950270}
   rewardElements:
   - {fileID: 1531199964}
   - {fileID: 987194511}
   rewardsDelay: 1
-  rewardStagger: 0.1
-  homeButton: {fileID: 0}
-  continueButton: {fileID: 0}
+  rewardStagger: 0.35
+  buttonsContainer: {fileID: 861449248}
   buttonsDelay: 1.3
-  buttonStagger: 0.1
-  particlesBurst: {fileID: 0}
-  particlesLoopedTop: {fileID: 0}
-  particlesLoopedMiddle: {fileID: 0}
-  homeButtonComponent: {fileID: 0}
-  continueButtonComponent: {fileID: 0}
-  transitionDuration: 0.4
+  buttonsDuration: 1
+  buttonsTargetPosition: {x: 0, y: 180}
+  particlesBurst: {fileID: 1072972876140367674}
+  particlesLoopedTop: {fileID: 4837671325177323604}
+  particlesLoopedMiddle: {fileID: 2844722937489192440}
+  homeButtonComponent: {fileID: 1835324064}
+  continueButtonComponent: {fileID: 66887407}
+  transitionDuration: 0.55
 --- !u!1 &1372797934
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,7 +3696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testButton: {fileID: 1443347950}
-  levelCompletedScreen: {fileID: 1371023733}
+  levelCompletedScreen: {fileID: 1371023730}
 --- !u!1 &1446147160
 GameObject:
   m_ObjectHideFlags: 0

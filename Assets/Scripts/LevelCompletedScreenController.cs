@@ -14,6 +14,7 @@ public class LevelCompletedScreenController : MonoBehaviour
     [SerializeField] private RectTransform titleCompletedImage;
     [SerializeField] private float titleDelay = 0.2f;
     [SerializeField] private float titleDuration = 0.6f;
+    [SerializeField] private Vector2 titleTargetPosition = new Vector2(0, 400);
     
     [Header("Star Animation")]
     [SerializeField] private RectTransform starBig;
@@ -32,10 +33,10 @@ public class LevelCompletedScreenController : MonoBehaviour
     [SerializeField] private float rewardStagger = 0.1f;
     
     [Header("Buttons Animation")]
-    [SerializeField] private RectTransform homeButton;
-    [SerializeField] private RectTransform continueButton;
+    [SerializeField] private RectTransform buttonsContainer; // The container with Layout Group
     [SerializeField] private float buttonsDelay = 1.3f;
-    [SerializeField] private float buttonStagger = 0.1f;
+    [SerializeField] private float buttonsDuration = 0.5f;
+    [SerializeField] private Vector2 buttonsTargetPosition = new Vector2(0, -600); // Adjust in Inspector
     
     [Header("Particles")]
     [SerializeField] private ParticleSystem particlesBurst;
@@ -70,12 +71,6 @@ public class LevelCompletedScreenController : MonoBehaviour
     {
         // Play show animation when activated
         AnimateIn();
-    }
-
-    public void Show()
-    {
-        gameObject.SetActive(true);
-        // AnimateIn is called by OnEnable
     }
 
     private void AnimateIn()
@@ -143,15 +138,10 @@ public class LevelCompletedScreenController : MonoBehaviour
             }
         }
         
-        // Buttons - start below screen
-        if (homeButton != null)
+        // Buttons container - start below screen
+        if (buttonsContainer != null)
         {
-            homeButton.anchoredPosition = new Vector2(homeButton.anchoredPosition.x, -Screen.height);
-        }
-        
-        if (continueButton != null)
-        {
-            continueButton.anchoredPosition = new Vector2(continueButton.anchoredPosition.x, -Screen.height);
+            buttonsContainer.anchoredPosition = new Vector2(buttonsContainer.anchoredPosition.x, -Screen.height);
         }
     }
 
@@ -160,19 +150,15 @@ public class LevelCompletedScreenController : MonoBehaviour
         // "Level" drops in first
         if (titleLevelImage != null)
         {
-            Vector2 targetPos = new Vector2(titleLevelImage.anchoredPosition.x, 0); // Adjust to your design
-            
-            titleLevelImage.DOAnchorPos(targetPos, titleDuration)
+            titleLevelImage.DOAnchorPos(titleTargetPosition, titleDuration)
                 .SetDelay(titleDelay)
                 .SetEase(Ease.OutBounce);
         }
-        
+    
         // "Completed!" drops in slightly after
         if (titleCompletedImage != null)
         {
-            Vector2 targetPos = new Vector2(titleCompletedImage.anchoredPosition.x, 0);
-            
-            titleCompletedImage.DOAnchorPos(targetPos, titleDuration)
+            titleCompletedImage.DOAnchorPos(titleTargetPosition, titleDuration)
                 .SetDelay(titleDelay + 0.15f)
                 .SetEase(Ease.OutBounce);
         }
@@ -223,20 +209,10 @@ public class LevelCompletedScreenController : MonoBehaviour
 
     private void AnimateButtons()
     {
-        Vector2 homeTargetPos = Vector2.zero; // Adjust to your design
-        Vector2 continueTargetPos = Vector2.zero; // Adjust to your design
-        
-        if (homeButton != null)
+        if (buttonsContainer != null)
         {
-            homeButton.DOAnchorPos(homeTargetPos, 0.5f)
+            buttonsContainer.DOAnchorPos(buttonsTargetPosition, buttonsDuration)
                 .SetDelay(buttonsDelay)
-                .SetEase(Ease.OutBack);
-        }
-        
-        if (continueButton != null)
-        {
-            continueButton.DOAnchorPos(continueTargetPos, 0.5f)
-                .SetDelay(buttonsDelay + buttonStagger)
                 .SetEase(Ease.OutBack);
         }
     }
