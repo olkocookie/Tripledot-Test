@@ -20,6 +20,14 @@ This project demonstrates a flexible mobile game UI implementation featuring:
 - Adaptive layouts for multiple device aspect ratios
 - Performance-optimized rendering with sprite atlases
 
+## Disclaimer
+
+Due to time constraints, final visual polish and animation timing of production quality were not part of the scope as the goal was to focus on showcasing a wide range of various skills.
+LevelCompletedScreen has title text imported as images and is not setup properly as TMP once again due to time constraints and since the goal of that part of the task was to focus
+on showcasing animation and VFX handling.
+All animations are done in code due to time constraints and to showcase code-based animation skills and also to demonstrate another viable approach to implementing UI animations, since
+there are case studies proving its better overall performance.
+
 ## Key Features Implemented
 
 ### Bottom Navigation Bar
